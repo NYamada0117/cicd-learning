@@ -1,1 +1,2 @@
-# cicd-learning
+## 学習メモ
+CI/CD学習用リポジトリ
