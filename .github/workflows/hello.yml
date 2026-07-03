@@ -3,6 +3,9 @@ name: Hello CI
 
 on:
   push:
+    branches:
+      - main
+      - "week2-**"
 
 jobs:
   greet:
