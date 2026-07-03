@@ -6,6 +6,11 @@ on:
     branches:
       - main
       - "week2-**"
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   greet:
