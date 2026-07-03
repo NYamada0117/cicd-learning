@@ -12,10 +12,32 @@ on:
       - synchronize
       - reopened
   workflow_dispatch:
+    inputs:
+      name:
+        description: "挨拶に含める名前"
+        reauired: true
+        default: "World"
+        type: string
+      envirinment:
+        description: "対象環境"
+        required: true
+        default: staging
+        type: choice
+        options:
+          - stating
+          - production
+      debug:
+        description: "デバッグログを出すか"
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
       - name: Say hello
-        run: echo "Hello CI"
+        run: |
+          echo "Hello ${{ inputs.name }}"
+          echo "Envitonment: ${{ inputs.environment }}"
+          echo "Debug mode: ${{ inputs.debug }}"
