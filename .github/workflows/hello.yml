@@ -31,13 +31,23 @@ on:
         required: false
         default: false
         type: boolean
+  schedule:
+    - cron: "0 0 * * 1"
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      greeting: ${{ steps.set.outputs.greeting }}
+    steps:
+      - name: Decide greeting
+        id: set
+        run: echo "greeting=Hello from prepare" >> "GITHUB_OUTPUT"
+
   greet:
+    needs: prepare
     runs-on: ubuntu-latest
     steps:
-      - name: Say hello
+      - name: Use greeting
         run: |
-          echo "Hello ${{ inputs.name }}"
-          echo "Envitonment: ${{ inputs.environment }}"
-          echo "Debug mode: ${{ inputs.debug }}"
+          echo "${{ needs.prepare,outputs.greeting }}"
