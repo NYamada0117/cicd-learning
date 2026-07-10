@@ -50,4 +50,4 @@ jobs:
     steps:
       - name: Use greeting
         run: |
-          echo "${{ needs.prepare,outputs.greeting }}"
+          echo "${{ needs.prepare.outputs.greeting }}"
