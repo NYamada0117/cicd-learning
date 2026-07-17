@@ -18,7 +18,7 @@ on:
         required: true
         default: "World"
         type: string
-      envirionment:
+      environment:
         description: "対象環境"
         required: true
         default: staging
